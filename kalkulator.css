@@ -1,0 +1,155 @@
+/* Gaya Umum Halaman */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'verdana', sans-serif;
+    padding: 20px;
+    background-color: var(--bg-color);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #fff;
+}
+
+:root {
+        --bg-color: #1f242d;
+        --second-bg-color: #323946;
+        --main-color: #7cf03d;
+        --white-color: #fff;
+        --disable-color: #fff3;
+}
+
+
+
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    visibility: hidden;
+    opacity: 0;
+    animation: show-content 1.5s linear forwards;
+    animation-delay: 1.6s;
+}
+
+@keyframes show-content {
+    100% {
+        visibility: visible;
+        opacity: 1;
+    }
+}
+
+/* Gaya Kalkulator */
+.calculator {
+    background: var(--second-bg-color); /* Latar belakang lebih gelap untuk kesan futuristik */
+    border: 3px solid var(--main-color); 
+    border-radius: 15px;
+    padding: 20px;
+    width: 400px;
+    color: #fff;
+
+ border-radius: 1rem;
+ transition: .5s;
+    
+}
+.calculator:hover {
+/* border-color: var(--main-color); */
+box-shadow: 0 0 10px var(--main-color);
+transform: scale(1.02);
+}
+
+/* Judul Kalkulator */
+.calculator h2 {
+    text-align: center;
+    color: var(--white-color); /* Emas terang */
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+    font-family: 'Verdana', sans-serif; /* Font futuristik untuk kesan teknologi */
+    transition: .5s;
+}
+.calculator h2:hover {
+    color: var(--main-color);
+}
+
+/* Label Input */
+.calculator label {
+    display: block;
+    margin: 10px 0 5px;
+    color: var(--main-color); 
+    font-weight: bold;
+}
+
+/* Input Number */
+.calculator input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 1.2em;
+    border: 2px solid var(--second-bg-color);
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: var(--bg-color); /* Latar belakang input lebih gelap */
+    color: var(--white-color);
+}
+
+/* Tombol */
+.calculator button {
+    display: block;
+    width: 100%;
+    padding: 10px 30px;
+    margin: 15px 0;
+    background: var(--main-color); /* Warna oranye yang kontras */
+    color: var(--bg-color);
+    font-size: 1.2rem;
+    border: 2px solid var(--main-color);
+    border-radius: 40px;
+    cursor: pointer;
+    transition: .5s;
+    box-shadow: 0 0 10px var(--main-color);
+}
+
+.calculator button:hover {
+    background: transparent;
+    color: var(--main-color);
+    box-shadow: none;
+}
+
+/* Hasil Perhitungan */
+.calculator p {
+    text-align: center;
+    font-size: 1.2em;
+    color: var(--main-color); /* Warna emas pada hasil perhitungan */
+    margin-top: 10px;
+    padding: 8px;
+    border-radius: 8px;
+    border: 2px dashed var(--main-color);
+}
+
+.navbar ul {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    padding: 25px 9%;
+    gap: 20px;
+    padding: 10px;
+    background-color: var(--bg-color);
+    visibility: hidden;
+    opacity: 0;
+    animation: show-content 1.5s linear forwards;
+    animation-delay: 1.2s; 
+}
+
+.navbar ul li a {
+    color: var(--white-color);
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.navbar ul li a:hover {
+    color: var(--main-color);
+}

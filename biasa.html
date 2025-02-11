@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #1f242d;
+            --second-bg-color: #323946;
+            --main-color: #7cf03d;
+            --white-color: #fff;
+            --disable-color: #fff3;
+        }
+        body {
+            font-family: 'verdana', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--white-color);
+        }
+        .btn {
+            transition: transform 0.2s, background-color 0.3s;
+            background-color: var(--second-bg-color);
+        }
+        .btn:hover {
+            transform: scale(1.1);
+            background-color: var(--main-color);
+            color: var(--bg-color);
+        }
+        .btn:active {
+            transform: scale(0.9);
+        }
+        .calculator {
+            animation: fadeIn 0.5s ease-in-out, border-glow 1.5s infinite alternate;
+            border: 3px solid var(--main-color);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes border-glow {
+            from { border-color: var(--main-color); box-shadow: 0 0 10px var(--main-color); }
+            to { border-color: var(--white-color); box-shadow: 0 0 20px var(--white-color); }
+        }
+        li a {
+            font-size: 20px;
+            font-weight: 500;
+
+            transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+        li a:hover {
+            color: var(--main-color);
+            transform: translateY(-2px);
+        }
+        #display {
+            background-color: var(--second-bg-color);
+        }
+    </style>
+</head>
+<body>
+    <nav class="bg-second-bg-color p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#" class="text-white text-lg font-bold">MyApp</a>
+            <ul class="flex space-x-4">
+                <li><a href="index.html" class="text-white">Aritmatika & Geometri</a></li>
+                <li><a href="biasa.html" class="text-white">Kalkulator</a></li>
+               
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mx-auto mt-10 p-4 max-w-md bg-second-bg-color rounded-lg shadow-lg calculator">
+        <div class="text-center mb-4">
+            <h1 class="text-2xl font-bold">Calculator</h1>
+        </div>
+        <div class="grid grid-cols-4 gap-4">
+            <input type="text" id="display" class="col-span-4 p-2 border border-gray-300 rounded text-right text-white" readonly>
+            <button class="p-4 bg-main-color rounded btn" onclick="clearDisplay()">C</button>
+            <button class="p-4 bg-main-color rounded btn" onclick="appendToDisplay('/')">/</button>
+            <button class="p-4 bg-main-color rounded btn" onclick="appendToDisplay('*')">*</button>
+            <button class="p-4 bg-main-color rounded btn" onclick="appendToDisplay('-')">-</button>
+            <button class="p-4 bg-second-bg-color rounded btn" onclick="appendToDisplay('7')">7</button>
+            <button class="p-4 bg-second-bg-color rounded btn" onclick="appendToDisplay('8')">8</button>
+            <button class="p-4 bg-second-bg-color rounded btn" onclick="appendToDisplay('9')">9</button>
+            <button class="p-4 bg-main-color rounded btn" onclick="appendToDisplay('+')">+</button>
+            <button class="p-4 bg-second-bg-color rounded btn" onclick="appendToDisplay('4')">4</button>
+            <button class="p-4 bg-second-bg-color rounded btn" onclick="appendToDisplay('5')">5</button>
+            <button class="p-4 bg-second-bg-color rounded btn" onclick="appendToDisplay('6')">6</button>
+            <button class="p-4 bg-main-color rounded btn row-span-2" onclick="calculateResult()">=</button>
+            <button class="p-4 bg-second-bg-color rounded btn" onclick="appendToDisplay('1')">1</button>
+            <button class="p-4 bg-second-bg-color rounded btn" onclick="appendToDisplay('2')">2</button>
+            <button class="p-4 bg-second-bg-color rounded btn" onclick="appendToDisplay('3')">3</button>
+            <button class="p-4 bg-second-bg-color rounded btn col-span-2" onclick="appendToDisplay('0')">0</button>
+            <button class="p-4 bg-second-bg-color rounded btn" onclick="appendToDisplay('.')">.</button>
+        </div>
+    </div>
+
+    <script>
+        function appendToDisplay(value) {
+            document.getElementById('display').value += value;
+        }
+        function clearDisplay() {
+            document.getElementById('display').value = '';
+        }
+        function calculateResult() {
+            try {
+                document.getElementById('display').value = eval(document.getElementById('display').value);
+            } catch (e) {
+                document.getElementById('display').value = 'Error';
+            }
+        }
+    </script>
+</body>
+</html>
